@@ -7,14 +7,12 @@ document.getElementById('loginScreen').innerHTML = `
   <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-sm">
     <div class="text-center mb-6">
       
-<!-- ✏️ CAMBIAR AQUÍ: Logo con imagen libre (sin recuadro de fondo) -->
       <div class="mb-3 flex items-center justify-center">
-        <img src="https://i.postimg.cc/zvL3HZvk/Diseno-sin-titulo.png" alt="Logo Casa de Gracia" class="w-24 h-24 object-contain mx-auto">
+        <img src="https://i.postimg.cc/zvL3HZvk/Diseno-sin-titulo.png" alt="Logo Iglesia" class="w-24 h-24 object-contain mx-auto">
       </div>
       
-      <!-- ✏️ CAMBIAR AQUÍ: Nombre principal de tu Iglesia en la pantalla de entrada -->
-      <h1 class="text-2xl font-bold text-slate-800">Sistema de Seguimiento</h1>
-      <p class="text-sm text-slate-500">Nuevos Miembros</p>
+      <h1 class="text-2xl font-bold text-slate-800">Centro de Fe, Esperanza y Amor</h1>
+      <p class="text-sm text-slate-500">Sistema de Registro</p>
     </div>
     <form id="formLogin" class="space-y-4">
       <div>
@@ -37,13 +35,14 @@ document.getElementById('loginScreen').innerHTML = `
 // 2. PANTALLA PRINCIPAL (SISTEMA ACTIVO)
 // ==========================================
 document.getElementById('appScreen').innerHTML = `
-  <!-- ✏️ CAMBIAR AQUÍ: Si quieres cambiar el color de la barra de azul a otro, cambia "from-blue-600 to-blue-700" -->
   <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 shadow-lg">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <div>
-        <!-- ✏️ CAMBIAR AQUÍ: Nombre de la Iglesia en la barra superior izquierda -->
-        <h1 class="text-xl font-bold">Centro de Fe, Esperanza y Amor - Pilares</h1>
-        <p class="text-xs text-blue-100" id="infoUsuario"></p>
+      <div class="flex items-center gap-3">
+      <img src="https://i.postimg.cc/zvL3HZvk/Diseno-sin-titulo.png" alt="Logo" class="w-10 h-10 object-contain rounded-full">
+        <div>
+          <h1 class="text-xl font-bold">Centro de Fe, Esperanza y Amor</h1>
+          <p class="text-xs text-blue-100" id="infoUsuario"></p>
+        </div>
       </div>
       <button onclick="cerrarSesion()" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm font-medium transition-colors">Salir</button>
     </div>
@@ -51,7 +50,6 @@ document.getElementById('appScreen').innerHTML = `
 
   <div class="bg-white border-b border-slate-200 sticky top-0 z-10">
     <div class="max-w-6xl mx-auto flex">
-      <!-- ✏️ CAMBIAR AQUÍ: Si cambias el color general (azul), edita "border-blue-600 text-blue-600" por tu nuevo color -->
       <button onclick="cambiarPestana('registro')" id="tabRegistro" class="flex-1 py-3 text-sm font-semibold border-b-2 border-blue-600 text-blue-600">Registro</button>
       <button onclick="cambiarPestana('lista')" id="tabLista" class="flex-1 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700">Familias</button>
       <button onclick="cambiarPestana('seguimiento')" id="tabSeguimiento" class="flex-1 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700">Seguimiento</button>
@@ -59,13 +57,11 @@ document.getElementById('appScreen').innerHTML = `
   </div>
 
   <div class="max-w-6xl mx-auto p-4 pb-20">
-    <!-- Pestaña Registro -->
     <div id="pestanaRegistro" class="bg-white rounded-xl shadow-sm p-5">
       <h2 class="text-lg font-semibold text-slate-800 mb-4" id="tituloForm">➕ Registrar Familia</h2>
       <form id="formRegistro" class="space-y-4">
         <input type="hidden" id="editIdFamilia" value="">
 
-        <!-- TITULAR -->
         <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
           <h3 class="text-sm font-bold text-blue-900 mb-3">👤 TITULAR</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -76,14 +72,12 @@ document.getElementById('appScreen').innerHTML = `
             <div>
               <label class="block text-xs font-medium text-slate-700 mb-1">¿Cómo se enteró? *</label>
               <select id="comoSeEntero" required class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                <!-- ✏️ CAMBIAR AQUÍ: Canales de captación/invitación -->
                 <option value="">Seleccionar</option>
                 <option>Invitación</option>
                 <option>Facebook</option>
                 <option>Instagram</option>
                 <option>Página web</option>
                 <option>Familiar/Amigo</option>
-		<option>Pasaba por aqui</option>
                 <option>Otro</option>
               </select>
             </div>
@@ -91,7 +85,6 @@ document.getElementById('appScreen').innerHTML = `
             <div class="md:col-span-2"><label class="block text-xs font-medium text-slate-700 mb-1">Dirección</label><input type="text" id="direccion" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500"></div>
             
             <div class="md:col-span-2 flex gap-4">
-              <!-- ✏️ CAMBIAR AQUÍ: Días oficiales de servicio de tu congregación -->
               <label class="flex items-center gap-2"><input type="checkbox" id="asisteMiercoles" class="w-4 h-4 text-blue-600"><span class="text-xs text-slate-700">Asiste Miércoles</span></label>
               <label class="flex items-center gap-2"><input type="checkbox" id="asisteDomingo" class="w-4 h-4 text-blue-600"><span class="text-xs text-slate-700">Asiste Domingo</span></label>
             </div>
@@ -100,7 +93,6 @@ document.getElementById('appScreen').innerHTML = `
           </div>
         </div>
 
-        <!-- CÓNYUGE -->
         <div class="bg-pink-50 p-4 rounded-lg border border-pink-200">
           <div class="flex items-center justify-between mb-3">
             <h3 class="text-sm font-bold text-pink-900">💑 CÓNYUGE</h3>
@@ -113,7 +105,6 @@ document.getElementById('appScreen').innerHTML = `
           </div>
         </div>
 
-        <!-- HIJOS -->
         <div class="bg-green-50 p-4 rounded-lg border border-green-200">
           <div class="flex items-center justify-between mb-3">
             <h3 class="text-sm font-bold text-green-900">👶 HIJOS</h3>
@@ -129,13 +120,11 @@ document.getElementById('appScreen').innerHTML = `
       </form>
     </div>
 
-    <!-- Pestaña Lista de Familias -->
     <div id="pestanaLista" class="hidden space-y-3">
       <div id="loadingLista" class="text-center py-12"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>
       <div id="listaFamilias"></div>
     </div>
 
-    <!-- Pestaña Seguimiento con Botón de Reporte Pastoral -->
     <div id="pestanaSeguimiento" class="hidden space-y-3">
       <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
         <div>
@@ -147,7 +136,6 @@ document.getElementById('appScreen').innerHTML = `
           <button onclick="filtrarAsistencia('pendientes')" id="filtroPendientes" class="px-3 py-1.5 text-sm rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Pendientes</button>
           <button onclick="filtrarAsistencia('asistieron')" id="filtroAsistieron" class="px-3 py-1.5 text-sm rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Asistieron</button>
           
-          <!-- Botón de Generar Reporte Pastoral -->
           <button onclick="generarReportePastoral()" class="ml-2 px-4 py-1.5 text-sm rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold hover:from-amber-600 hover:to-amber-700 transition-all shadow-sm flex items-center gap-1.5">
             👑 Generar Reporte Pastoral
           </button>
@@ -175,3 +163,35 @@ document.getElementById('modalBorrar').innerHTML = `
     </div>
   </div>
 `;
+
+// ==========================================
+// 4. MODAL DE BITÁCORA PASTORAL (COMENTARIOS)
+// ==========================================
+const modalBitacoraDiv = document.createElement('div');
+modalBitacoraDiv.id = 'modalBitacora';
+modalBitacoraDiv.className = 'hidden fixed inset-0 bg-black/50 items-center justify-center z-50 p-4';
+modalBitacoraDiv.innerHTML = `
+  <div class="bg-white rounded-2xl w-full max-w-lg flex flex-col max-h-[85vh] shadow-2xl">
+    <div class="p-5 border-b border-slate-100 flex justify-between items-center bg-slate-50 rounded-t-2xl">
+      <div>
+        <h3 class="text-lg font-bold text-slate-800">📝 Bitácora de Cuidado Pastoral</h3>
+        <p class="text-xs text-slate-500" id="bitacoraNombreMiembro">Miembro: </p>
+      </div>
+      <button onclick="cerrarBitacora()" class="text-slate-400 hover:text-slate-600 text-xl font-bold px-2">✕</button>
+    </div>
+    
+    <div class="p-5 overflow-y-auto flex-1 space-y-3 bg-slate-50/50" id="historialComentarios"></div>
+    
+    <form id="formNuevaNota" class="p-4 border-t border-slate-100 bg-white rounded-b-2xl">
+      <input type="hidden" id="bitacoraIdMiembro" value="">
+      <div class="flex gap-2">
+        <input type="text" id="nuevaNotaTexto" required placeholder="Escribe qué acción se tomó (ej: Se le llamó, se agendó visita)..." 
+               class="flex-1 px-4 py-2.5 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+        <button type="submit" id="btnGuardarNota" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-colors shadow-sm whitespace-nowrap">
+          Guardar Nota
+        </button>
+      </div>
+    </form>
+  </div>
+`;
+document.body.appendChild(modalBitacoraDiv);
