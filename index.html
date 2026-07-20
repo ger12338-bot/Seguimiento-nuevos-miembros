@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Centro de Fe, Esperanza y Amor - Registro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Contenedor para Notificaciones Toast -->
+    <div id="toastContainer" class="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none max-w-[90vw]"></div>
+
+    <div id="loginScreen" class="min-h-screen flex items-center justify-center p-4"></div>
+
+    <div id="appScreen" class="hidden"></div>
+
+    <!-- MODAL CONFIRMACIÓN BORRAR FAMILIA -->
+    <div id="modalBorrar" class="hidden fixed inset-0 bg-black/50 items-center justify-center z-50 p-4"></div>
+
+    <!-- MODAL DE BITÁCORA PASTORAL -->
+    <div id="modalBitacora" class="hidden fixed inset-0 bg-black/50 items-center justify-center z-50 p-3 sm:p-4">
+      <div class="bg-white rounded-2xl w-full max-w-lg flex flex-col max-h-[90vh] shadow-2xl relative" onclick="event.stopPropagation()">
+        <div class="p-4 sm:p-5 border-b border-slate-100 flex justify-between items-center bg-slate-50 rounded-t-2xl">
+          <div class="pr-2">
+            <h3 class="text-base sm:text-lg font-bold text-slate-800 leading-tight">📝 Bitácora Pastoral</h3>
+            <p class="text-xs text-slate-500 truncate max-w-[200px] sm:max-w-xs" id="bitacoraNombreMiembro">Miembro: </p>
+          </div>
+          <button type="button" onclick="cerrarBitacora()" class="text-slate-400 hover:text-slate-600 text-xl font-bold p-1">✕</button>
+        </div>
+        
+        <div class="p-3 sm:p-5 overflow-y-auto flex-1 space-y-3 bg-slate-50/50" id="historialComentarios"></div>
+        
+        <form id="formNuevaNota" class="p-3 sm:p-4 border-t border-slate-100 bg-white rounded-b-2xl">
+          <input type="hidden" id="bitacoraIdMiembro" value="">
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="text" id="nuevaNotaTexto" required placeholder="Escribe qué acción se tomó..." 
+                   class="w-full sm:flex-1 px-3 py-2.5 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+            <button type="submit" id="btnGuardarNota" class="w-full sm:w-auto px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-colors shadow-sm whitespace-nowrap">
+              Guardar Nota
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL PARA EDITAR NOTA DE BITÁCORA -->
+    <div id="modalEditarNota" class="hidden fixed inset-0 bg-black/50 items-center justify-center z-[60] p-3 sm:p-4">
+      <div class="bg-white rounded-2xl w-full max-w-md p-4 sm:p-5 shadow-2xl relative" onclick="event.stopPropagation()">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="text-base font-bold text-slate-800">✏️ Editar Nota</h3>
+          <button type="button" onclick="cerrarModalEditarNota()" class="text-slate-400 hover:text-slate-600 text-lg font-bold p-1">✕</button>
+        </div>
+        <input type="hidden" id="editNotaFilaIndex" value="">
+        <textarea id="editNotaTexto" rows="4" class="w-full p-3 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none resize-none mb-4" placeholder="Escribe el texto corregido..."></textarea>
+        <div class="flex gap-2 justify-end">
+          <button type="button" onclick="cerrarModalEditarNota()" class="flex-1 sm:flex-none px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-colors">Cancelar</button>
+          <button type="button" id="btnGuardarEdicionNota" onclick="confirmarEdicionNotaBitacora()" class="flex-1 sm:flex-none px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl transition-colors shadow-sm">Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="components.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
